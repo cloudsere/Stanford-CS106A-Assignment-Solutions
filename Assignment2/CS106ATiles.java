@@ -76,11 +76,10 @@ public class CS106ATiles extends GraphicsProgram {
 	 * @param x X-coordinate of the outer rectangle of the label.
 	 */
 	private void drawTileLabel(double recX, double recY) {
-		GLabel label = new GLabel("CS106A", recX, recY);
+		GLabel label = new GLabel("CS106A");
 		double labelX = (TILE_WIDTH - label.getWidth())/2 + recX;
 		double labelY = (TILE_HEIGHT + label.getAscent())/2 + recY;
-		label.setLocation(labelX, labelY);
-		add(label);
+		add(label,labelX, labelY);
 	}
 }
 
