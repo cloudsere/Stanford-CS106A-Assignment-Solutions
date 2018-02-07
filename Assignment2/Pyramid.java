@@ -48,7 +48,7 @@ public class Pyramid extends GraphicsProgram {
 		/*
 		 * Bricks on each layer has the same y-coordinate,
 		 * which is the y-coordinate of each layer.
-		 * Use of for loop to generate x-coordinate of each brick in every layer.
+		 * Use for loop to generate x-coordinate of each brick in every layer.
 		 */
 		for(int i=0; i<brickNumber; i++) {
 			double brickX = firstBrickX + i*BRICK_WIDTH;
