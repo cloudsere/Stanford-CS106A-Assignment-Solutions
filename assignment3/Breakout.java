@@ -232,12 +232,15 @@ public class Breakout extends GraphicsProgram {
 		double y = ball.getY();
 		double r = BALL_RADIUS;
 		GObject obj = getElementAt(x, y);
+		
 		if(obj == null) {
 			obj = getElementAt(x, y + 2 * r);
 		}
+		
 		if(obj == null) {
 			obj = getElementAt(x + 2 * r, y);
 		}
+		
 		if(obj == null) {
 			obj = getElementAt(x + 2 * r, y + 2 *r);
 		}
@@ -247,7 +250,7 @@ public class Breakout extends GraphicsProgram {
 	private void checkForPaddleCollision() {
 		GObject obj = getCollidingObject();
 		if(obj == paddle) {
-			vy = -vy;
+			vy = -1 * Math.abs(vy);
 		}
 	}
 	
