@@ -67,6 +67,7 @@ public class Histogram extends ConsoleProgram {
 			int score = sc.nextInt();
 			scoreArray.add(score);
 		}
+		sc.close();
 		return scoreArray;
 	}
 	
