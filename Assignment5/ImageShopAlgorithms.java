@@ -171,16 +171,16 @@ public class ImageShopAlgorithms implements ImageShopAlgorithmsInterface {
 				
 				int xCoordinate;
 				if(i + dy >= 0) {
-					xCoordinate = (i + dy) % column;
+					xCoordinate = (i + dy) % row;
 				}else {
-					xCoordinate = (column - 1) + (i + dy) % column;
+					xCoordinate = (column - 1) + (i + dy) % row;
 				}
 				
 				int yCoordinate = 0;
 				if(j + dx >= 0) {
-					yCoordinate = (j + dx) % row;
+					yCoordinate = (j + dx) % column;
 				}else {
-					yCoordinate = (row - 1) + (j + dx) % row;
+					yCoordinate = (row - 1) + (j + dx) % column;
 				}
 				
 				newArray[xCoordinate][yCoordinate] = pixel;
