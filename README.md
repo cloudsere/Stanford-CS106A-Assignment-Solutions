@@ -1,5 +1,13 @@
 # Stanford-CS106A-Assignment-Solutions
 
+### Assignment 3
+
+![assignment5-demo](https://github.com/cloudsere/Stanford-CS106A-Assignment-Solutions/blob/master/doc/pics/assignment3.gif)
+
+### Assignment 5
+
+![assignment5-demo](https://github.com/cloudsere/Stanford-CS106A-Assignment-Solutions/blob/master/doc/pics/assignment5.gif)
+
 ### Assignment 6
 
 ![assignment6-demo](https://github.com/cloudsere/Stanford-CS106A-Assignment-Solutions/blob/master/doc/pics/assignment6.gif?raw=true)
