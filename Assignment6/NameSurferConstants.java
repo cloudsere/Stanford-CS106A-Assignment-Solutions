@@ -34,5 +34,7 @@ public interface NameSurferConstants {
 
 /** The number of pixels between the baseline of the decade labels and the bottom of the window */
 	public static final int DECADE_LABEL_MARGIN_SIZE = GRAPH_MARGIN_SIZE / 4;
+	
+	public static final double RADIUS_LABEL_CIRCLE = 3;
 
 }

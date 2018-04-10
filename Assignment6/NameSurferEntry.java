@@ -22,7 +22,7 @@ public class NameSurferEntry implements NameSurferConstants {
 		int leftIndex = 0;
 		int rightIndex = line.indexOf(' ', leftIndex);
 		
-		rank = new int[11];
+		rank = new int[NDECADES];
 		int loopIndex = 0;
 		while(rightIndex > 0) {
 			if(loopIndex == 0) {
@@ -35,6 +35,7 @@ public class NameSurferEntry implements NameSurferConstants {
 			leftIndex = rightIndex+1;
 			rightIndex = line.indexOf(' ', leftIndex);
 		}
+		rank[NDECADES-1] = Integer.parseInt(line.substring(leftIndex));
 	}
 
 /* Method: getName() */
@@ -54,9 +55,9 @@ public class NameSurferEntry implements NameSurferConstants {
  * not appear in a decade, the rank value is 0.
  */
 	public int getRank(int decade) {
-		if(decade < 1900 || decade>2000) return -1;
+		if(decade < 0 || decade>NDECADES-1) return -1;
 		
-		return rank[decade-1900];
+		return rank[decade];
 	}
 
 /* Method: toString() */

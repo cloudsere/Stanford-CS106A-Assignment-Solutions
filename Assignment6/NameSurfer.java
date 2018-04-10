@@ -22,10 +22,6 @@ public class NameSurfer extends Program implements NameSurferConstants {
 		loadData();
 	}
 	
-	private void loadData() {
-		dataBase = new NameSurferDataBase("names-data.txt");
-	}
-	
 	private void addMainGraph() {
 		mainGraph = new NameSurferGraph();
 		add(mainGraph);
@@ -40,9 +36,15 @@ public class NameSurfer extends Program implements NameSurferConstants {
 		add(new JButton("Graph"),NORTH);
 		add(new JButton("Clear"),NORTH);
 		
+		JLabel deleteLabel = new JLabel("Click on Name to Remove Line:");
+		this.add(deleteLabel,SOUTH);
+		
 		addActionListeners();
 	}
 	
+	private void loadData() {
+		dataBase = new NameSurferDataBase("names-data.txt");
+	}
 
 /* Method: actionPerformed(e) */
 /**
@@ -51,11 +53,46 @@ public class NameSurfer extends Program implements NameSurferConstants {
  * button actions.
  */
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == textSearchField || e.getActionCommand().equals("Graph")){
+		String cmd = e.getActionCommand();
+		
+		if(e.getSource() == textSearchField || cmd.equals("Graph")){
 			String searchTerm = textSearchField.getText();
-			NameSurferEntry entry=  dataBase.findEntry(searchTerm);
-			println(entry);
+			NameSurferEntry entry = dataBase.findEntry(searchTerm);
+			if(entry != null && mainGraph.addEntry(entry)) {
+				mainGraph.update();
+				addTag(entry);
+			}
+			return;
 		  }
+		
+		if(cmd.equals("Clear")) {
+			mainGraph.clear();
+			mainGraph.update();
+			return;
+		}
+		
+		NameSurferEntry cmdEntry = dataBase.findEntry(cmd);
+		if(cmdEntry != null) {
+			mainGraph.deleteEntry(cmdEntry);
+			mainGraph.update();
+			removeTag(e);
+		}
+	}
+	
+	/* Question here: have to update the whole window, such as resize the window to see the newly added button */
+	private void addTag(NameSurferEntry entry) {
+		JButton btn = new JButton(entry.getName());
+		add(btn, SOUTH);
+		btn.addActionListener(this);
+		this.revalidate();
+		this.repaint();
+	}
+	
+	private void removeTag(ActionEvent e) {
+		JButton btn = (JButton) e.getSource();
+		btn.getParent().remove(btn);
+		this.revalidate();
+		this.repaint();
 	}
 	
 	private NameSurferGraph mainGraph;
